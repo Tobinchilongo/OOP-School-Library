@@ -11,6 +11,35 @@
 - VSCode
 - Rubocop
 
+## Getting Started
+
+**To get a local copy up and running follow these simple example steps.**
+
+### Prerequisites
+- Ruby should be installed on your machine
+
+### Setup
+```
+git clone git@github.com:Tobinchilongo/OOP-School-Library.git
+cd OOP-School-Library
+```
+### Install
+```
+bundle install
+```
+
+### Play with the code
+```
+irb
+```
+
+### Run linters
+```
+rubocop -a
+
+```
+ruby app.rb
+```
 
 ## Authors
 
