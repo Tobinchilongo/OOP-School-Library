@@ -4,7 +4,6 @@ require_relative('./rental')
 require_relative('./student')
 require_relative('./teacher')
 require 'date'
-require 'separate_options'
 
 class Methods
   def initialize
