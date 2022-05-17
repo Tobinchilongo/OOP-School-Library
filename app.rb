@@ -1,10 +1,10 @@
+require './book'
 require './person'
 require './student'
 require './teacher'
-require './book'
+require './nameable'
 require './classroom'
 require './rental'
-require './nameable'
 
 class App
   attr_reader :books, :people
