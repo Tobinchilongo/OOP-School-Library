@@ -1,10 +1,10 @@
-require './book'
-require './person'
-require './student'
-require './teacher'
-require './nameable'
-require './classroom'
-require './rental'
+require './classes/book'
+require './classes/person'
+require './classes/student'
+require './classes/teacher'
+require './classes/nameable'
+require './classes/classroom'
+require './classes/rental'
 require './handle_data'
 
 class App
