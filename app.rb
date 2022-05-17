@@ -5,7 +5,7 @@ require './classes/teacher'
 require './classes/nameable'
 require './classes/classroom'
 require './classes/rental'
-require './handle_data'
+require './classes/handle_data'
 
 class App
   attr_reader :books, :people
@@ -22,10 +22,10 @@ class App
         Teacher.new(el['age'], el['name'], el['specialization'])
       end
     end
-    @rentals = @rentals_file.read.map do |el|
-      book = @books.select { |bk| bk.title == el['book_title'] }[0]
-      person = @people.select { |pn| pn.id == el['person_id'] }[0]
-      Rental.new(book, person, el['date'])
+    @rentals = @rentals_file.read.map do |k|
+      book = @books.select { |bk| bk.title == k['book_title'] }[0]
+      person = @people.select { |boy| boy.id == k['person_id'] }[0]
+      Rental.new(book, person, k['date'])
     end
   end
 
