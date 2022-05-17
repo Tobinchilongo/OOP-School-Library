@@ -1,7 +1,6 @@
 require './nameable'
 
 class Person < Nameable
-  @@id_counter = 0
   attr_accessor :age, :name
   attr_reader :id, :rentals
 
@@ -10,9 +9,8 @@ class Person < Nameable
     @age = age
     @name = name
     @parent_permission = parent_permission
-    @id = @@id_counter
     @rentals = []
-    @@id_counter += 1
+    @id = Random.rand(1..1000)
   end
 
   def can_use_services?
