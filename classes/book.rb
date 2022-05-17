@@ -13,4 +13,8 @@ class Book
   def add_rental(rental)
     @rentals.push(rental) unless @rentals.include?(rental)
   end
+
+  def create_object
+    { title: @title, author: @author }
+  end
 end

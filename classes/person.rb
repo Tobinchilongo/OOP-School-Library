@@ -29,6 +29,11 @@ class Person < Nameable
     @rentals.push(rental) unless @rentals.include?(rental)
   end
 
+  def create_object
+    object_data = { age: @age, name: @name, id: @id }
+    @object_data = object_data
+  end
+
   private
 
   def of_age?

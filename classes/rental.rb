@@ -10,4 +10,8 @@ class Rental
     book&.add_rental(self)
     person&.add_rental(self)
   end
+
+  def create_object
+    { book_title: @book.title, person_id: @person.id, date: @date }
+  end
 end
