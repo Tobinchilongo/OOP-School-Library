@@ -43,11 +43,17 @@ ruby app.rb
 
 ## Authors
 
-👤 **Tobinchilongo**
+👤 **Tobin Chilongo**
 
 - GitHub: [@Tobinchilongo](https://github.com/Tobinchilongo)
 - Twitter: [@Tobin_Official](https://twitter.com/Tobin_Official)
 - LinkedIn: [@Tobinchilongo](https://www.linkedin.com/in/tobin-chilongo-a6736415a/)
+
+👤 **Jerry Owusu**
+
+- GitHub: [@jerryowusu](https://github.com/jerryowusu)
+- Twitter: [@jerryowusu11](https://twitter.com/jerryowusu11)
+- LinkedIn: [Jerry Owusu](https://www.linkedin.com/in/jerry-owusu/)
 
 ## Contributors
 

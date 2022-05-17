@@ -1,55 +1,42 @@
 require './app'
+require './logic'
 
-class App
-  def self.home_page
-    puts 'Welcome to the School Library App!'
-    puts "\n"
-    puts 'Please choose an option by entering a number: '
-
-    @content = {
-      '1' => 'List all books',
-      '2' => 'List all people',
-      '3' => 'Create a person',
-      '4' => 'Create a book',
-      '5' => 'Create a rental',
-      '6' => 'List all rentals for a given person id',
-      '7' => 'Exit'
-    }
-
-    @content.each do |index, string|
-      puts "#{index} - #{string}"
-    end
-
-    Integer(gets.chomp)
-  end
-
-  method = Methods.new
-
-  loop do
-    case home_page
-    when 1
-      method.list_books
-    when 2
-      method.list_people
-    when 3
-      method.create_person
-    when 4
-      method.create_book
-    when 5
-      method.create_rental
-    when 6
-      method.list_rentals
-    when 7
-      puts 'Thank you for using the app!'
-      exit
-    else
-      puts 'Choose a number between 1 to 7'
-    end
-  end
+def options
+  [
+    '',
+    'Please choose an option by entering a number:',
+    '1 - List all books',
+    '2 - List all people',
+    '3 - Create a person',
+    '4 - Create a book',
+    '5 - Create a rental',
+    '6 - List all rentals for a given person id',
+    '7 - Exit'
+  ]
 end
 
+# rubocop:disable Metrics/CyclomaticComplexity
+
 def main
-  App.new
+  app = App.new
+  puts 'Welcome to School Library App.'
+
+  app_should_run = true
+  while app_should_run
+    puts options
+    user_selection = gets.to_i
+    case user_selection
+    when 1 then list_books(app.books)
+    when 2 then list_people(app.people)
+    when 3 then create_person(app)
+    when 4 then create_book(app)
+    when 5 then create_rental(app)
+    when 6 then list_rentals(app)
+    when 7 then app_should_run = false
+    else puts 'Please input a number between 1 and 7'
+    end
+  end
+  # rubocop:enable Metrics/CyclomaticComplexity
 end
 
 main
