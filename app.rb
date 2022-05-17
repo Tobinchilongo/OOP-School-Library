@@ -5,13 +5,28 @@ require './teacher'
 require './nameable'
 require './classroom'
 require './rental'
+require './handle_data'
 
 class App
   attr_reader :books, :people
 
   def initialize
-    @books = []
-    @people = []
+    @books_file = HandleData.new('books')
+    @people_file = HandleData.new('persons')
+    @rentals_file = HandleData.new('rentals')
+    @books = @books_file.read.map { |el| Book.new(el['title'], el['author']) }
+    @people = @people_file.read.map do |el|
+      if el['class'].include?('Student')
+        Student.new(el['age'], el['name'], el['parent_permission'], el['classroom'])
+      else
+        Teacher.new(el['age'], el['name'], el['specialization'])
+      end
+    end
+    @rentals = @rentals_file.read.map do |el|
+      book = @books.select { |bk| bk.title == el['book_title'] }[0]
+      person = @people.select { |pn| pn.id == el['person_id'] }[0]
+      Rental.new(book, person, el['date'])
+    end
   end
 
   def create_student(age, name, permission)
@@ -36,5 +51,11 @@ class App
   def list_rentals_for_given_id(id)
     selected_person = @people.select { |person| person.id == id }
     selected_person[0].rentals
+  end
+
+  def exit
+    @books_file.write(@books.map(&:create_object))
+    @people_file.write(@people.map(&:create_object))
+    @rentals_file.write(@rentals.map(&:create_object))
   end
 end
