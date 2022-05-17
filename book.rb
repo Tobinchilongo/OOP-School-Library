@@ -1,15 +1,15 @@
-require_relative './rental'
+require './rental'
 
 class Book
+  attr_accessor :title, :author, :rentals
+
   def initialize(title, author)
     @title = title
     @author = author
     @rentals = []
   end
-  attr_reader :rentals
-  attr_accessor :title, :author
 
-  def add_rentals=(person, date)
-    Rental.new(self, person, date)
+  def add_rental(date, person)
+    Rental.new(date, person, self)
   end
 end
