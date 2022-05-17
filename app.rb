@@ -22,10 +22,10 @@ class App
         Teacher.new(el['age'], el['name'], el['specialization'])
       end
     end
-    @rentals = @rentals_file.read.map do |k|
-      book = @books.select { |bk| bk.title == k['book_title'] }[0]
-      person = @people.select { |boy| boy.id == k['person_id'] }[0]
-      Rental.new(book, person, k['date'])
+    @rentals = @rentals_file.read.map do |el|
+      book = @books.select { |el| el.title == el['book_title'] }[0]
+      person = @people.select { |el| el.id == el['person_id'] }[0]
+      Rental.new(book, person, el['date'])
     end
   end
 
@@ -45,7 +45,8 @@ class App
   end
 
   def create_rental(book, person)
-    Rental.new(book, person)
+    rental = Rental.new(book, person)
+    @rentals.push(rental)
   end
 
   def list_rentals_for_given_id(id)
