@@ -9,7 +9,7 @@ require './classes/handle_data'
 require 'json'
 
 class App
-  attr_reader :books, :people, :id
+  attr_reader :books, :people, :rentals, :id
 
   def initialize
     @books_file = HandleData.new('books')
@@ -52,7 +52,11 @@ class App
 
   def list_rentals_for_given_id(id)
     selected_person = @people.select { |person| person.id == id }
-    selected_person[0].rental
+    @rentals.each do |rental|
+      if rental.person == selected_person[0]
+        puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}"
+      end
+    end
   end
 
   def exit
