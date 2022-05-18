@@ -6,7 +6,8 @@ describe Student do
     age = 24
     name = 'Jerry'
     classroom = 'web developer'
-    student1 = Student.new(age, name, classroom)
+    parent_permission = true
+    student1 = Student.new(age, name, parent_permission, classroom)
     it 'if is an istance of class' do
       expect(student1).to be_an_instance_of(Student)
     end

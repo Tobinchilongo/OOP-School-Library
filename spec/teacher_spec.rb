@@ -5,7 +5,7 @@ describe Teacher do
     age = 30
     name = 'Jerry'
     specialization = 'Programming'
-    teacher = Teacher.new(age, name, specialization)
+    teacher = Teacher.new(age, specialization, name)
     it 'if is instance of class' do
       expect(teacher.instance_of?(Teacher)) == true
     end
