@@ -14,18 +14,18 @@ class App
     @books_file = HandleData.new('books')
     @people_file = HandleData.new('persons')
     @rentals_file = HandleData.new('rentals')
-    @books = @books_file.read.map { |el| Book.new(el['title'], el['author']) }
-    @people = @people_file.read.map do |el|
-      if el['class'].include?('Student')
-        Student.new(el['age'], el['name'], el['parent_permission'], el['classroom'])
+    @books = @books_file.read.map { |arr| Book.new(arr['title'], arr['author']) }
+    @people = @people_file.read.map do |arr|
+      if arr['class'].include?('Student')
+        Student.new(arr['age'], arr['name'], arr['parent_permission'], arr['classroom'])
       else
-        Teacher.new(el['age'], el['name'], el['specialization'])
+        Teacher.new(arr['age'], arr['name'], arr['specialization'])
       end
     end
-    @rentals = @rentals_file.read.map do |el|
-      book = @books.select { |el| el.title == el['book_title'] }[0]
-      person = @people.select { |el| el.id == el['person_id'] }[0]
-      Rental.new(book, person, el['date'])
+    @rentals = @rentals_file.read.map do |arr|
+      book = @books.select { |bk| bk.title == arr['book_title'] }[0]
+      person = @people.select { |pers| pers.id == arr['person_id'] }[0]
+      Rental.new(book, person, arr['date'])
     end
   end
 
