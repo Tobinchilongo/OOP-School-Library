@@ -26,7 +26,7 @@ end
 
 def list_people(people)
   people.each_with_index do |person, idx|
-    puts "#{idx}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    puts "#{idx}) [#{person.class}] Name: #{person.name}, ID: #{idx}, Age: #{person.age}"
   end
 end
 

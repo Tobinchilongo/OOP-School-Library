@@ -9,7 +9,7 @@ require './classes/handle_data'
 require 'json'
 
 class App
-  attr_reader :books, :people
+  attr_reader :books, :people, :id
 
   def initialize
     @books_file = HandleData.new('books')
@@ -52,7 +52,7 @@ class App
 
   def list_rentals_for_given_id(id)
     selected_person = @people.select { |person| person.id == id }
-    selected_person[0].rentals
+    selected_person[0].rental
   end
 
   def exit

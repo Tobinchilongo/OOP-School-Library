@@ -12,6 +12,6 @@ class Rental
   end
 
   def create_object
-    { book_title: @book.title, person_id: @person.id, date: @date }
+    { book_title: @book.title, person_id: @person.idx, date: @date }
   end
 end
