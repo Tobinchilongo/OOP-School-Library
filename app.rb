@@ -6,6 +6,7 @@ require './classes/nameable'
 require './classes/classroom'
 require './classes/rental'
 require './classes/handle_data'
+require 'json'
 
 class App
   attr_reader :books, :people
