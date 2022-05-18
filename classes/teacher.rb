@@ -12,7 +12,7 @@ class Teacher < Person
 
   def create_object
     super()
-    object_data = @object_data 
+    object_data = @object_data
     object_data[:specialization] = @specialization
     object_data[:class] = 'Teacher'
     object_data
