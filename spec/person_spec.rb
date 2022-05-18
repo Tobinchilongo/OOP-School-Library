@@ -1,4 +1,4 @@
-require_relative '../person'
+require_relative '../classes/person'
 
 describe Person do
   context 'Test for the Person class' do

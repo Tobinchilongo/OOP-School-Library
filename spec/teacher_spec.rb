@@ -1,4 +1,4 @@
-require_relative '../teacher'
+require_relative '../classes/teacher'
 
 describe Teacher do
   context 'Test for the Teacher class' do
