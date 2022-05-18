@@ -1,17 +1,33 @@
-require './book'
-require './person'
-require './student'
-require './teacher'
-require './nameable'
-require './classroom'
-require './rental'
+require './classes/book'
+require './classes/person'
+require './classes/student'
+require './classes/teacher'
+require './classes/nameable'
+require './classes/classroom'
+require './classes/rental'
+require './classes/handle_data'
+require 'json'
 
 class App
-  attr_reader :books, :people
+  attr_reader :books, :people, :rentals, :id
 
   def initialize
-    @books = []
-    @people = []
+    @books_file = HandleData.new('books')
+    @people_file = HandleData.new('persons')
+    @rentals_file = HandleData.new('rentals')
+    @books = @books_file.read.map { |arr| Book.new(arr['title'], arr['author']) }
+    @people = @people_file.read.map do |arr|
+      if arr['class'].include?('Student')
+        Student.new(arr['age'], arr['name'], arr['parent_permission'], arr['classroom'])
+      else
+        Teacher.new(arr['age'], arr['name'], arr['specialization'])
+      end
+    end
+    @rentals = @rentals_file.read.map do |arr|
+      book = @books.select { |bk| bk.title == arr['book_title'] }[0]
+      person = @people.select { |pers| pers.id == arr['person_id'] }[0]
+      Rental.new(book, person, arr['date'])
+    end
   end
 
   def create_student(age, name, permission)
@@ -30,11 +46,22 @@ class App
   end
 
   def create_rental(book, person)
-    Rental.new(book, person)
+    rental = Rental.new(book, person)
+    @rentals.push(rental)
   end
 
   def list_rentals_for_given_id(id)
     selected_person = @people.select { |person| person.id == id }
-    selected_person[0].rentals
+    @rentals.each do |rental|
+      if rental.person == selected_person[0]
+        puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}"
+      end
+    end
+  end
+
+  def exit
+    @books_file.write(@books.map(&:create_object))
+    @people_file.write(@people.map(&:create_object))
+    @rentals_file.write(@rentals.map(&:create_object))
   end
 end

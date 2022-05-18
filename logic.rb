@@ -26,7 +26,7 @@ end
 
 def list_people(people)
   people.each_with_index do |person, idx|
-    puts "#{idx}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    puts "#{idx}) [#{person.class}] Name: #{person.name}, ID: #{idx}, Age: #{person.age}"
   end
 end
 
@@ -78,6 +78,6 @@ end
 def list_rentals(app)
   id_to_query = ask_user_i('ID of person')
   puts 'Rentals: '
-  rentals = app.list_rentals_for_given_id(id_to_query)
-  rentals.each { |rental| puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}" }
+  @rentals = app.list_rentals_for_given_id(id_to_query)
+  @rentals.each { |rental| puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}" }
 end
