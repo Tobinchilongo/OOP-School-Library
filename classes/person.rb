@@ -1,4 +1,4 @@
-require './nameable'
+require_relative 'nameable'
 
 class Person < Nameable
   attr_accessor :age, :name
@@ -27,6 +27,11 @@ class Person < Nameable
 
   def add_rental(rental)
     @rentals.push(rental) unless @rentals.include?(rental)
+  end
+
+  def create_object
+    object_data = { age: @age, name: @name, id: @id }
+    @object_data = object_data
   end
 
   private
