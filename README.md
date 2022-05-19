@@ -10,6 +10,10 @@
 - Ruby
 - VSCode
 - Rubocop
+- Unit Test
+- Database
+- `IOs`
+- Gemfiles
 
 ## Getting Started
 
@@ -38,7 +42,7 @@ irb
 rubocop -a
 
 ```
-ruby app.rb
+ruby main.rb
 
 
 ## Authors
