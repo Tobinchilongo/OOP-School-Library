@@ -1,4 +1,4 @@
-require_relative '../classroom'
+require_relative '../classes/classroom'
 
 describe Classroom do
   context 'Test for Classroom class' do

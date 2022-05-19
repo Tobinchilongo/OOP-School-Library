@@ -1,11 +1,11 @@
-require_relative '../teacher'
+require_relative '../classes/teacher'
 
 describe Teacher do
   context 'Test for the Teacher class' do
     age = 30
     name = 'Jerry'
     specialization = 'Programming'
-    teacher = Teacher.new(age, name, specialization)
+    teacher = Teacher.new(age, specialization, name)
     it 'if is instance of class' do
       expect(teacher.instance_of?(Teacher)) == true
     end

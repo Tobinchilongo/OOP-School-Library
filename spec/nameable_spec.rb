@@ -1,5 +1,5 @@
-require_relative '../nameable'
-require_relative '../person'
+require_relative '../classes/nameable'
+require_relative '../classes/person'
 
 describe Nameable do
   context 'Test for Nameable class' do
