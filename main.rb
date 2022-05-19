@@ -3,7 +3,7 @@ require './logic'
 
 def exit_app(app)
   app.exit
-  puts 'Data saved'
+  puts 'Data saved, Thank you & Call Again'
   false
 end
 
